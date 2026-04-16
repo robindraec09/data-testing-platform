@@ -1,0 +1,28 @@
+test:
+  name: retail_product_data_quality
+  type: data_quality
+  source:
+    type: file
+    path: examples/industries/retail/product_catalog.csv
+    format: csv
+  rules:
+    - not_null:
+        column: product_id
+    - unique:
+        column: product_id
+    - regex:
+        column: product_id
+        pattern: '^PRD\d{3}$'
+    - not_null:
+        column: product_name
+    - range:
+        column: price
+        min: 0
+        max: 10000
+    - range:
+        column: stock_quantity
+        min: 0
+        max: 10000
+    - regex:
+        column: supplier_id
+        pattern: '^SUP\d{3}$'

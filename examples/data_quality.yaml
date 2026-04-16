@@ -1,0 +1,19 @@
+test:
+  name: customer_data_integrity
+  type: data_quality
+  source:
+    type: file
+    path: examples/customers.csv
+    format: csv
+  rules:
+    - not_null:
+        column: customer_id
+    - unique:
+        column: customer_id
+    - regex:
+        column: email
+        pattern: '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+$'
+    - range:
+        column: age
+        min: 0
+        max: 120

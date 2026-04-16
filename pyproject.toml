@@ -1,0 +1,17 @@
+[project]
+name = "data-testing-platform"
+version = "0.1.0"
+description = "Unified data quality, ETL, API contract, and AI-assisted test platform."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.0",
+    "PyYAML>=6.0",
+    "pandas>=2.0",
+    "sqlalchemy>=2.0",
+    "jsonschema>=4.0",
+    "requests>=2.0"
+]
+
+[project.scripts]
+data-test-tool = "data_test_tool.cli:main"

@@ -1,0 +1,18 @@
+test:
+  name: healthcare_api_contract
+  type: api_contract
+  source:
+    type: rest
+    url: http://127.0.0.1:8001/api/v1/patients
+    method: GET
+    headers:
+      Accept: application/json
+      Authorization: Bearer health-api-token
+  rules:
+    - schema:
+        file: examples/industries/healthcare/patient_schema.json
+    - response_code:
+        value: 200
+    - field_present:
+        field: patients
+    - max_response_time: 1000ms

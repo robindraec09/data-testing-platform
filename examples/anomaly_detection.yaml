@@ -1,0 +1,37 @@
+test:
+  name: "Financial Transaction Anomaly Detection"
+  description: "Advanced ML-based anomaly detection for financial transactions"
+  type: "anomaly_detection"
+  source:
+    type: "file"
+    path: "examples/anomaly_transactions.csv"
+    format: "csv"
+
+  rules:
+    # Establish baseline using ML methods
+    - establish_baseline:
+        column: "amount"
+        method: "isolation_forest"  # ML-based baseline
+
+    - establish_baseline:
+        column: "balance"
+        method: "statistical"  # Statistical baseline for comparison
+
+    # Detect anomalies in transaction amounts
+    - detect_anomalies:
+        column: "amount"
+        method: "auto"  # Auto-select method based on baseline
+
+    # Detect anomalies in account balances
+    - detect_anomalies:
+        column: "balance"
+        method: "statistical"
+
+    # Multivariate anomaly detection across correlated columns
+    - multivariate_anomalies:
+        columns: ["amount", "balance", "transaction_count"]
+
+    # Seasonal anomaly detection (if time column exists)
+    - seasonal_anomalies:
+        column: "amount"
+        time_column: "timestamp"

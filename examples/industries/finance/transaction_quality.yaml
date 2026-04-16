@@ -1,0 +1,28 @@
+test:
+  name: finance_transaction_data_quality
+  type: data_quality
+  source:
+    type: file
+    path: examples/industries/finance/transaction_data.csv
+    format: csv
+  rules:
+    - not_null:
+        column: account_id
+    - unique:
+        column: account_id
+    - regex:
+        column: account_id
+        pattern: '^ACC\d{3}$'
+    - range:
+        column: balance
+        min: 0
+        max: 1000000
+    - regex:
+        column: transaction_date
+        pattern: '^\d{4}-\d{2}-\d{2}$'
+    - range:
+        column: amount
+        min: -100000
+        max: 100000
+    - not_null:
+        column: description

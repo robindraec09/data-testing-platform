@@ -1,0 +1,17 @@
+test:
+  name: retail_etl_sales_validation
+  type: etl
+  source:
+    type: file
+    path: examples/industries/retail/product_catalog.csv
+    format: csv
+  target:
+    type: file
+    path: examples/industries/retail/sales_orders.csv
+    format: csv
+  rules:
+    - checksum_match:
+        columns: [product_id]
+    - incremental_load:
+        key_column: order_id
+        timestamp_column: order_date

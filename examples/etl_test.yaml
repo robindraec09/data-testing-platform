@@ -1,0 +1,16 @@
+test:
+  name: customer_etl_reconciliation
+  type: etl
+  source:
+    type: file
+    path: examples/customers.csv
+    format: csv
+  target:
+    type: file
+    path: examples/target_customers.csv
+    format: csv
+  rules:
+    - row_count_match: {}
+    - checksum_match:
+        columns: [customer_id, email, age]
+    - columns_match: {}

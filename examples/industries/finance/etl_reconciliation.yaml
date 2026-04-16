@@ -1,0 +1,19 @@
+test:
+  name: finance_etl_reconciliation
+  type: etl
+  source:
+    type: file
+    path: examples/industries/finance/transaction_data.csv
+    format: csv
+  target:
+    type: file
+    path: examples/industries/finance/account_balances.csv
+    format: csv
+  rules:
+    - row_count_match: {}
+    - checksum_match:
+        columns: [account_id, balance]
+    - columns_match: {}
+    - incremental_load:
+        key_column: account_id
+        timestamp_column: last_updated

@@ -1,0 +1,6 @@
+product_id,product_name,category,price,stock_quantity,supplier_id
+PRD001,Wireless Headphones,Electronics,199.99,50,SUP001
+PRD002,Cotton T-Shirt,Clothing,29.99,200,SUP002
+PRD003,Stainless Steel Water Bottle,Kitchen,24.99,150,SUP003
+PRD004,Yoga Mat,Sports,39.99,75,SUP004
+PRD005,Organic Coffee Beans,Grocery,18.99,300,SUP005

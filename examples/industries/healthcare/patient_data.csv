@@ -1,0 +1,6 @@
+patient_id,gender,age,blood_type,diagnosis_date,medication
+P001,M,45,O+,2024-01-15,Lisinopril
+P002,F,32,A-,2024-02-20,Metformin
+P003,M,67,B+,2024-01-10,Aspirin
+P004,F,28,O-,2024-03-05,Amoxicillin
+P005,M,52,AB+,2024-02-28,Warfarin
