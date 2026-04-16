@@ -1,0 +1,24 @@
+test:
+  name: "Customer Data Quality Check"
+  description: "Validate customer data integrity with comprehensive checks"
+  type: "data_quality"
+  source:
+    type: "file"
+    path: "examples/customers.csv"
+    format: "csv"
+  rules:
+    - not_null:
+        column: "customer_id"
+    - unique:
+        column: "customer_id"
+    - not_null:
+        column: "email"
+    - regex:
+        column: "email"
+        pattern: "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+$"
+    - range:
+        column: "age"
+        min: 18
+        max: 120
+    - not_null:
+        column: "city"

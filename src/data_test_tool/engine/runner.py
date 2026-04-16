@@ -8,6 +8,7 @@ from ..engine.evaluator import RuleEvaluator, EvaluationResult
 from ..models.test_definition import TestDefinition
 from ..reporting.json_report import JsonReport
 from ..reporting.junit_report import JunitReport
+from ..reporting.html_report import HtmlReport
 
 
 class TestRunner:
@@ -28,3 +29,4 @@ class TestRunner:
         report_path.mkdir(parents=True, exist_ok=True)
         JsonReport.write(results, report_path / "results.json")
         JunitReport.write(results, report_path / "results.xml")
+        HtmlReport.write(results, report_path / "dashboard.html")
